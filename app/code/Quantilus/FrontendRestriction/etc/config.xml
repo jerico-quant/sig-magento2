@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:framework/Config/etc/config.xsd">
+    <default>
+        <frontend_restriction>
+            <settings>
+                <allowed_urls>checkout_cart_index,checkout_index_index,customer_account_login,customer_account_create,customer_account_logout,customer_account_forgotpassword</allowed_urls>
+            </settings>
+        </frontend_restriction>
+    </default>
+</config>
