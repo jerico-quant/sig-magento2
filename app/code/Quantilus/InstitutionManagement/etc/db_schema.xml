@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table name="quantilus_institutionmanagement_institution" resource="default" engine="innodb" comment="quantilus_institutionmanagement_institution Table">
+		<column xsi:type="int" name="institution_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="institution_id"/>
+		</constraint>
+		<column name="code" nullable="true" xsi:type="text" comment="code"/>
+		<column name="name" nullable="true" xsi:type="text" comment="name"/>
+	</table>
+
+	<!-- Institution to Product Relation Table -->
+	<table name="quantilus_institutionmanagement_institution_product" resource="default" engine="innodb" comment="Institution to Product Relation Table">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="ID"/>
+        <column name="institution_id" xsi:type="int" unsigned="true" nullable="false" comment="Institution ID"/>
+        <column name="product_id" xsi:type="int" unsigned="true" nullable="false" comment="Product ID"/>
+        
+        <!-- Define the primary key -->
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        
+        <!-- Add a unique constraint for institution_id and product_id -->
+        <constraint xsi:type="unique" referenceId="INSTITUTION_PRODUCT_UNIQUE">
+            <column name="institution_id"/>
+            <column name="product_id"/>
+        </constraint>
+
+        <constraint xsi:type="foreign" referenceId="QUANTILUS_INSTITUTION_PRODUCT_INSTITUTION_ID_FK"
+            table="quantilus_institutionmanagement_institution_product" column="institution_id" 
+            referenceTable="quantilus_institutionmanagement_institution" referenceColumn="institution_id" onDelete="CASCADE"/>
+        
+        <constraint xsi:type="foreign" referenceId="QUANTILUS_INSTITUTION_PRODUCT_PRODUCT_ID_FK"
+            table="quantilus_institution_product" column="product_id" 
+            referenceTable="catalog_product_entity" referenceColumn="entity_id" onDelete="CASCADE"/>
+	</table>
+</schema>

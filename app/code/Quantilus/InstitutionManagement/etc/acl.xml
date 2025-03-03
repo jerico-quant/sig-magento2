@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+	<acl>
+		<resources>
+			<resource id="Magento_Backend::admin">
+				<resource id="Quantilus_InstitutionManagement::Institution" title="Institution" sortOrder="10">
+					<resource id="Quantilus_InstitutionManagement::Institution_save" title="Save Institution" sortOrder="10"/>
+					<resource id="Quantilus_InstitutionManagement::Institution_delete" title="Delete Institution" sortOrder="20"/>
+					<resource id="Quantilus_InstitutionManagement::Institution_update" title="Update Institution" sortOrder="30"/>
+					<resource id="Quantilus_InstitutionManagement::Institution_view" title="View Institution" sortOrder="40"/>
+				</resource>
+			</resource>
+		</resources>
+	</acl>
+</config>
