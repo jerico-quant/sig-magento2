@@ -6,7 +6,7 @@
  */
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" label="Customer My Account (All Pages)" design_abstraction="custom">
-    <head>
+    <!-- <head>
         <title>My Account</title>
     </head>
     <body>
@@ -54,5 +54,13 @@
                 </block>
             </block>
         </referenceContainer>
+    </body> -->
+    <body>
+        <referenceBlock name="customer-account-navigation-downloadable-products-link" remove="true" />
+        <referenceBlock name="customer-account-navigation-product-reviews-link" remove="true" />
+        <referenceBlock name="customer-account-navigation-my-credit-cards-link" remove="true" />
+        <referenceBlock name="customer-account-navigation-delimiter-1" remove="true" />
+        <referenceBlock name="customer-account-navigation-delimiter-2" remove="true" />
+        <referenceBlock name="catalog.compare.sidebar" remove="true" />
     </body>
 </page>

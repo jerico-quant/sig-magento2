@@ -1,0 +1,54 @@
+& when (@media-common = true) {
+    .lib-font-face(
+        @family-name:'Lato-Regular',
+        @font-path: '@{baseDir}fonts/Lato-Regular',
+        @font-weight: 400,
+        @font-style: normal,
+        @font-display: swap
+    );
+
+    .lib-font-face(
+        @family-name:'Lato-Bold',
+        @font-path: '@{baseDir}fonts/Lato-Bold',
+        @font-weight: 400,
+        @font-style: normal,
+        @font-display: swap
+    );
+
+    .lib-font-face(
+        @family-name:'Lato-Light',
+        @font-path: '@{baseDir}fonts/Lato-Light',
+        @font-weight: 400,
+        @font-style: normal,
+        @font-display: swap
+    );
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-size: 1em;
+    font-family: 'Lato-Regular';
+}
+
+h1 {
+    font-size: 1.8em;
+}
+
+h2 {
+    font-size: 1.6em;
+}
+
+h3 {
+    font-size: 1.42em;
+}
+
+h4 {
+    font-size: 1.27em;
+}
+
+h5 {
+    font-size: 1.13em;
+}

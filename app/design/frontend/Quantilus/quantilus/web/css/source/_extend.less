@@ -1,0 +1,51 @@
+@quantilus_primary_color: #0761BE;
+@quantilus_secondary_color: #CDDFF2;
+@quantilus_background_color: #F5F9FB;
+@qunatilus_primary_text_color: #333333;
+
+& when (@media-common = true) {
+
+    .page-header{
+        .header.panel {
+            > .header.links {
+                > li {
+                    > a {
+                        color: @qunatilus_primary_text_color;
+                        text-decoration: underline;
+
+                        &:active,&:visited{
+                            color: @qunatilus_primary_text_color;
+                            text-decoration: underline;
+                        }
+                    }
+
+                    &.greet{
+                        font-family: 'Lato-Bold';
+                    }
+                }
+            }
+        }
+    }
+
+    .copyright {
+        background-color: @quantilus_secondary_color;
+        color: @qunatilus_primary_text_color;
+    }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .page-header {
+        .header.panel {
+            padding-top: 50px;
+            padding-bottom: 20px;
+        }
+        .panel.wrapper {
+            background-color: @quantilus_secondary_color;
+            color: @qunatilus_primary_text_color;
+        }
+    }
+}
