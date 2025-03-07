@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="Quantilus_ProductManagement::product_management" title="Product Management" module="Quantilus_ProductManagement" sortOrder="10" resource="Quantilus_ProductManagement::product_management"/>
-        <add id="Quantilus_ProductManagement::product_management_add" title="Add Product" module="Quantilus_ProductManagement" sortOrder="10" parent="Quantilus_ProductManagement::product_management" action="quantilus_productmanagement/product/index" resource="Quantilus_ProductManagement::product_management"/>
+        <add id="Quantilus_ProductManagement::product_management_add" title="Add Product" module="Quantilus_ProductManagement" sortOrder="100" parent="Quantilus::top_level" action="quantilus_productmanagement/product/index" resource="Quantilus_ProductManagement::product_management"/>
     </menu>
 </config>
