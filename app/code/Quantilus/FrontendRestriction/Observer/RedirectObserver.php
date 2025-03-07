@@ -42,7 +42,8 @@ class RedirectObserver implements ObserverInterface
             // Redirect to the cart page
             $redirectUrl = $this->url->getUrl('checkout/cart');
             $this->responseFactory->create()->setRedirect($redirectUrl)->sendResponse();
-            exit; // Stop further execution
+            exit;
         }
+        
     }
 }
