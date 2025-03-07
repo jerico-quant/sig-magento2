@@ -360,6 +360,7 @@ return [
         'PayPal_BraintreeGiftWrapping' => 1,
         'PayPal_BraintreeGraphQl' => 1,
         'Quantilus_FrontendRestriction' => 1,
-        'Quantilus_InstitutionManagement' => 1
+        'Quantilus_InstitutionManagement' => 1,
+        'Quantilus_ProductManagement' => 1
     ]
 ];

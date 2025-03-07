@@ -11,7 +11,7 @@ class Form extends Generic
         $form = $this->_formFactory->create([
             'data' => [
                 'id' => 'edit_form',
-                'action' => $this->getUrl('*/*/save'),
+                'action' => $this->getUrl('quantilus_productmanagement/product/save'),
                 'method' => 'post',
             ],
         ]);
@@ -65,5 +65,41 @@ class Form extends Generic
 
         $this->setForm($form);
         return parent::_prepareForm();
+    }
+
+    /**
+     * Add action buttons to the form
+     *
+     * @return $this
+     */
+    protected function _prepareLayout()
+    {
+        parent::_prepareLayout();
+
+        // Add "Save" button
+        $this->getToolbar()->addChild(
+            'save_button',
+            \Magento\Backend\Block\Widget\Button::class,
+            [
+                'label' => __('Save This'),
+                'class' => 'save primary',
+                'data_attribute' => [
+                    'mage-init' => ['button' => ['event' => 'save', 'target' => '#edit_form']],
+                ],
+            ]
+        );
+
+        // Add "Back" button
+        $this->getToolbar()->addChild(
+            'back_button',
+            \Magento\Backend\Block\Widget\Button::class,
+            [
+                'label' => __('Back'),
+                'onclick' => "setLocation('" . $this->getUrl('quantilus_productmanagement/product/index') . "')",
+                'class' => 'back',
+            ]
+        );
+
+        return $this;
     }
 }

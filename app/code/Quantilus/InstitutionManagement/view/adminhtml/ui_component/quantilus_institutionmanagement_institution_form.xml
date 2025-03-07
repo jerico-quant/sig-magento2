@@ -80,7 +80,7 @@
         </settings>
         <container name="assign_products_container" sortOrder="160">
             <htmlContent name="html_content">
-                <block name="gallery" class="Quantilus\InstitutionManagement\Block\Adminhtml\InstitutionProducts"/>
+                <block name="product.grid" class="Quantilus\InstitutionManagement\Block\Adminhtml\InstitutionProducts"/>
             </htmlContent>
         </container>
     </fieldset>
