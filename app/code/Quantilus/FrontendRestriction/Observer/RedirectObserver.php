@@ -28,6 +28,11 @@ class RedirectObserver implements ObserverInterface
     public function execute(Observer $observer)
     {
         $request = $observer->getEvent()->getRequest();
+
+        $frontName = $request->getModuleName();
+        $controllerName = $request->getControllerName();
+        $actionName = $request->getActionName();
+
         $fullactionname = $request->getFullActionName();
 
         // Get allowed URLs from the admin configuration
