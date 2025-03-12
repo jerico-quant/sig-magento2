@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="mobius_user" resource="default" engine="innodb" comment="Mobius User">
+        <column xsi:type="int" name="mobius_user_id" padding="11" unsigned="true" nullable="false" identity="true" comment=""/>
+        <column xsi:type="varchar" name="account_number" length="8" nullable="false" comment=""/>
+        <column xsi:type="varchar" name="email" length="100" nullable="false" comment=""/>
+        <column xsi:type="varchar" name="kitcode" length="20" nullable="true" comment=""/>
+        
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="mobius_user_id"/>
+        </constraint>
+        <!-- Unique constraint for account_number -->
+        <constraint xsi:type="unique" referenceId="MOBIUS_USER_ACCOUNT_NUMBER_UNIQUE">
+            <column name="account_number"/>
+        </constraint>
+
+        <!-- Unique constraint for email -->
+        <constraint xsi:type="unique" referenceId="MOBIUS_USER_EMAIL_UNIQUE">
+            <column name="email"/>
+        </constraint>
+    </table>
+</schema>

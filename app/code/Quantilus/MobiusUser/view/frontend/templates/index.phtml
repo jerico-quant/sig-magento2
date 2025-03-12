@@ -1,0 +1,19 @@
+<div class="mobius-user">
+    <h1><?= $block->escapeHtml($block->getName()) ?></h1>
+    <div class="content-wrapper">
+        <div class="useractions">
+            <div class="action-option kitcode">
+                <h2>I have a Kit Code</h2>
+                <form action="<?= $block->escapeUrl($block->getProcessKitCodeUrl()) ?>" method="post">
+                    <input type="hidden" name="form_key" value="<?= $block->getFormKey() ?>" />
+                    <input type="text" name="kitcode" id="kitcode" placeholder="Enter your Kit Code" required />
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+            <div class="action-option purchase">
+                <h2>I want to purchase a Kit.</h2>
+                <p><a href="<?= $block->escapeUrl($block->getPurchaseKitUrl()) ?>">Click To Purchase Kit.</a></p>
+            </div>
+        </div>
+    </div>
+</div>
