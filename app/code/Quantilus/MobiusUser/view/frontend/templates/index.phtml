@@ -17,7 +17,12 @@ $userData = $block->getUserData();
             </div>
             <div class="action-option purchase">
                 <h2>I want to purchase a Kit.</h2>
-                <p><a href="<?= $block->escapeUrl($block->getPurchaseKitUrl()) ?>">Click To Purchase Kit.</a></p>
+                <p>If you have a Voucher Code, enter it below, otherwise just click Proceed</p>
+                <form action="<?= $block->escapeUrl($block->getPurchaseKitUrl()) ?>" method="post">
+                    <input type="hidden" name="form_key" value="<?= $block->getFormKey() ?>" />
+                    <input type="text" name="voucher_code" id="voucher_code" placeholder="Enter your Voucher Code" />
+                    <button type="submit">Proceed</button>
+                </form>
             </div>
             <div class="action-option view-order">
                 <h2>I want to view my orders</h2>
@@ -25,7 +30,7 @@ $userData = $block->getUserData();
                     <input type="hidden" name="form_key" value="<?= $block->getFormKey() ?>" />
                     <input type="text" name="accountnumber" id="accountnumber" value="<?= $userData['accountnumber'] ?>" placeholder="Enter your Account Number" required />
                     <input type="text" name="email" id="email" value="<?= $userData['email'] ?>" placeholder="Enter your Email" required />
-                    <button type="submit">Submit</button>
+                    <button type="submit">View My Orders</button>
                 </form>
             </div>
         </div>
