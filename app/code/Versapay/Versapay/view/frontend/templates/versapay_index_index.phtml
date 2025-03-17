@@ -1,0 +1,102 @@
+<?php
+/*
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$checkOrder = $objectManager->get('Versapay\Versapay\Cron\CheckOrders');
+$checkOrder->execute();
+
+die("xxx111"); */
+
+
+
+$order = $block->getOrder();
+if ($order && $order->getStatus()) {
+    $billingAddress = $order->getBillingAddress();
+    $address = implode(',', $billingAddress->getStreet());/*.' '.$billingAddress->getCity().' '.$billingAddress->getRegion().' '.$billingAddress->getCity();*/
+    $postcode = $billingAddress->getPostcode();
+    $city = $billingAddress->getCity();
+    $region = $billingAddress->getRegionCode();
+
+?>
+
+
+    <?php $session = $this->getSessionKey();
+    $sessionKey = $session['id'];
+    ?>
+    <form id='form'>
+        <div id='versapay-container'></div>
+        <div>
+            <button id='submit'>Submit</button>
+        </div>
+    </form>
+    <script>
+        const form = document.querySelector('#form')
+        const submit = document.querySelector('#submit')
+
+        var clientSession = '<?php echo $sessionKey ?>';
+        var styles = {}
+        var fontUrls = []
+
+        alert("de1");
+        require([
+            "https://ecommerce-api-eng.versapay.com/client.js",
+            'jquery',
+            'mage/url'
+        ], function(versapay,
+            $,
+            urlBuilder) {
+            alert("de12");
+
+
+            const form = document.querySelector('#co-payment-form');
+            const submit = document.querySelector('#versapay-submit');
+            const submitError = document.querySelector('#submitError');
+
+            $('#versapay-submit').attr("disabled", true);
+
+            var versapay_paymentType;
+            var versapay_token;
+
+            var styles = {};
+
+            var fontUrls = [];
+
+            alert("de3");
+            client = versapay.initClient(clientSession);
+            alert("de4");
+
+            var frameReadyPromise = client.initFrame(document.querySelector('#versapay-container'), '300px', '500px');
+
+            client.onApproval(
+                (result) => {
+                    submitError.textContent = '';
+                    versapay_paymentType = result.paymentTypeName;
+                    versapay_token = result.token;
+                    $("#versapay-final-submit").click()
+                },
+                (error) => {
+                    submitError.textContent = error.error
+                }
+            )
+
+            frameReadyPromise.then(function() {
+                $('#versapay-submit').removeAttr("disabled");
+                form.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    client.submitEvents();
+                })
+            });
+
+        });
+    </script>
+
+
+
+
+
+
+<?php } else if (!$order->getId()) { ?>
+
+    <h3>Order Not Found</h3>
+<?php } else if ($order) { ?>
+    <h3>Payment can not be processed since Order status is <?php echo $order->getStatus() ?></h3>
+<?php } ?>
