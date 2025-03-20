@@ -361,6 +361,7 @@ return [
         'PayPal_BraintreeGiftCardAccount' => 1,
         'PayPal_BraintreeGiftWrapping' => 1,
         'PayPal_BraintreeGraphQl' => 1,
+        'Quantilus_CourseReference' => 1,
         'Quantilus_FrontendRestriction' => 1,
         'Quantilus_InstitutionManagement' => 1,
         'Quantilus_MobiusUser' => 1,

@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+	<router id="admin">
+		<route frontName="quantilus_coursereference" id="quantilus_coursereference">
+			<module before="Magento_Backend" name="Quantilus_CourseReference"/>
+		</route>
+	</router>
+</config>
