@@ -128,6 +128,9 @@ class Index extends Action
                     }
                 }
                 
+                // this is a fix to the 0 subtotal in cart
+                $shippingAddress = $quote->getShippingAddress();
+                $shippingAddress->setCollectShippingRates(true)->collectShippingRates();
                 // call to calculate all fields related to totals
                 $quote->collectTotals();
                 $this->_cartRepository->save($quote);
