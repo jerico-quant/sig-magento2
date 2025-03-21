@@ -365,6 +365,7 @@ return [
         'Quantilus_FrontendRestriction' => 1,
         'Quantilus_InstitutionManagement' => 1,
         'Quantilus_MobiusUser' => 1,
+        'Quantilus_Versapay' => 1,
         'Versapay_Versapay' => 1
     ]
 ];

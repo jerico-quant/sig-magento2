@@ -79,7 +79,79 @@
 		<column name="course_id">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">course_id</label>
+				<label translate="true">Course ID</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="course_name">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Course Name</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="customer_number">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Customer Number</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="item_number">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Item Number</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="unit_price">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Unit Price</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="blanket_sales_order_number">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Blanket Sales Order No.</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="blanket_sales_order_line">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Blanket Sales Order Line</label>
 				<editor>
 					<editorType>text</editorType>
 					<validation>
@@ -95,77 +167,5 @@
 				<resizeDefaultWidth>107</resizeDefaultWidth>
 			</settings>
 		</actionsColumn>
-		<column name="course_name">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">course_name</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="customer_number">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">customer_number</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="item_number">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">item_number</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="unit_price">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">unit_price</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="blanket_sales_order_number">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">blanket_sales_order_number</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="blanket_sales_order_line">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">blanket_sales_order_line</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
 	</columns>
 </listing>
