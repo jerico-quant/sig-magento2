@@ -187,8 +187,12 @@ define(
         quote.paymentMethod.subscribe((method) => {
             if (method.method === 'versapay_gateway') {
                 let deferred = $.Deferred();
-                let defferedAction = getTotalsAction([], deferred);
-                defferedAction.success(function(){
+                // let defferedAction = getTotalsAction([], deferred);
+                // defferedAction.success(function(){
+                //     initVersapayPaymentMethod();
+                // });
+
+                getTotalsAction([], deferred).then(function() {
                     initVersapayPaymentMethod();
                 });
             }
