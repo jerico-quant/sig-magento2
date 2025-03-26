@@ -11,6 +11,9 @@ use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\SalesRule\Model\Coupon;
 use Magento\SalesRule\Model\RuleFactory;
 use Magento\Framework\UrlInterface;
+use Quantilus\CourseReference\Model\CourseReferenceRepository;
+use Magento\Customer\Model\Session as CustomerSession;
+use Magento\Framework\Api\SearchCriteriaBuilder;
 
 class Index extends Action
 {
@@ -50,6 +53,21 @@ class Index extends Action
     protected $_url;
 
     /**
+     * @var CourseReferenceRepository $_courseReferenceRepository
+     */
+    protected $_courseReferenceRepository;
+
+    /**
+     * @var CustomerSession $_customerSession
+     */
+    protected $_customerSession;
+
+    /**
+     * @var SearchCriteriaBuilder $_searchCriteriaBuilder
+     */
+    protected $_searchCriteriaBuilder;
+
+    /**
      * @param Context $context
      * @param SessionFactory $checkoutSession
      * @param CartRepositoryInterface $cartRepository
@@ -58,6 +76,8 @@ class Index extends Action
      * @param Coupon $coupon
      * @param RuleFactory $ruleFactory
      * @param UrlInterface $url
+     * @param CustomerSession $customerSession
+     * @param SearchCriteriaBuilder $_searchCriteriaBuilder
      */
     public function __construct(
         Context $context,
@@ -67,7 +87,10 @@ class Index extends Action
         LoggerInterface $logger,
         Coupon $coupon,
         RuleFactory $ruleFactory,
-        UrlInterface $url
+        UrlInterface $url,
+        CourseReferenceRepository $courseReferenceRepository,
+        CustomerSession $customerSession,
+        SearchCriteriaBuilder $searchCriteriaBuilder
     ) {
         $this->_checkoutSession = $checkoutSession;
         $this->_cartRepository = $cartRepository;
@@ -76,6 +99,9 @@ class Index extends Action
         $this->_coupon = $coupon;
         $this->_ruleFactory = $ruleFactory;
         $this->_url = $url;
+        $this->_courseReferenceRepository = $courseReferenceRepository;
+        $this->_customerSession = $customerSession;
+        $this->_searchCriteriaBuilder = $searchCriteriaBuilder;
         parent::__construct($context);
     }
 
@@ -86,12 +112,21 @@ class Index extends Action
      */
     public function execute()
     {
-        $productId = 1;
         $couponCode = $this->getRequest()->getParam('voucher_code');
         $referrerUrl = $this->_redirect->getRefererUrl();
+        $course_id = $this->_customerSession->getCourseId();
+        $customer_number = $this->_customerSession->getCustomerNumber();
 
         try {
-            $product = $this->_productRepository->getById($productId);
+            // load the Course Reference record, it has the product sku in item_number field
+            $courseReference = $this->getCourseReferenceByCourseIdAndCustomerNumber($course_id, $customer_number);
+            $sku = $courseReference->getItemNumber();
+            $product = $this->_productRepository->get($sku);
+            $productId = $product->getId();
+
+            $custom_price = number_format($courseReference->getUnitPrice(),2); // fetch the price set for the product, not from the admin
+            $product->setPrice($custom_price);
+            $product->setBasePrice($custom_price);
             $qty = 1;
             $session = $this->_checkoutSession->create();
             $quote = $session->getQuote();
@@ -110,14 +145,26 @@ class Index extends Action
                 $this->messageManager->addNoticeMessage(__('This product is already in your cart.'));
             } else {
                 // Add the product to the cart
-                $quote->addProduct($product, $qty);
+                $quoteItem = $quote->addProduct($product, $qty);
+                
+                // Set custom price properly
+                if (is_array($quoteItem)) {
+                    $quoteItem = $quoteItem[0]; // handle case where addProduct returns array
+                }
+                
+                // set the custom price on the fly to fix issue with calculating totals
+                $quoteItem->setCustomPrice($custom_price);
+                $quoteItem->setOriginalCustomPrice($custom_price);
+                $quoteItem->getProduct()->setIsSuperMode(true); // This bypasses validation
 
                 // Validate the coupon code
                 if($couponCode){
                     $coupon = $this->_coupon->load($couponCode, 'code');
                     $rule = $this->_ruleFactory->create()->load($coupon->getRuleId());
+                    $rule_customer_number = $rule->getCustomerNumber();
 
-                    if ($coupon->getId() && $rule->getIsActive()) {
+                    //checks if the promotion is active and current promotion customer number matches the current customer number
+                    if ($coupon->getId() && $rule->getIsActive() && $rule_customer_number == $customer_number) {
                         $quote->setCouponCode($couponCode)->collectTotals();
                         $this->messageManager->addSuccessMessage(__('Coupon code "%1" was successfully applied.', $couponCode));
                     } else {
@@ -131,6 +178,7 @@ class Index extends Action
                 // this is a fix to the 0 subtotal in cart
                 $shippingAddress = $quote->getShippingAddress();
                 $shippingAddress->setCollectShippingRates(true)->collectShippingRates();
+                
                 // call to calculate all fields related to totals
                 $quote->collectTotals();
                 $this->_cartRepository->save($quote);
@@ -141,7 +189,13 @@ class Index extends Action
         } catch (\Exception $e) {
             // Log the error and display an error message
             $this->messageManager->addErrorMessage(__('There was an error adding the product to your cart or applying the coupon code.'));
-            $this->_logger->error($e->getMessage());
+            $this->_logger->error(
+                __(
+                    "Error: %1\nStack Trace:\n%2",
+                    $e->getMessage(),
+                    $e->getTraceAsString()
+                )
+            );
 
             $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
             $resultRedirect->setUrl($referrerUrl ?: $this->_url->getUrl('checkout/cart'));
@@ -153,5 +207,26 @@ class Index extends Action
         $resultRedirect->setPath('checkout/index/index');
 
         return $resultRedirect;
+    }
+
+    private function getCourseReferenceByCourseIdAndCustomerNumber($course_id, $customer_number)
+    {        
+        $searchCriteria = $this->_searchCriteriaBuilder
+            ->addFilter('course_id', $course_id, 'eq')
+            ->addFilter('customer_number', $customer_number, 'eq')
+            ->setPageSize(1)
+            ->create();
+        
+        $searchResult = $this->_courseReferenceRepository->getList($searchCriteria);
+        
+        if ($searchResult->getTotalCount() === 0) {
+            throw new NoSuchEntityException(__(
+                'CourseReference with course_id "%1" and customer_number "%2" does not exist.',
+                $course_id,
+                $customer_number
+            ));
+        }
+        
+        return current($searchResult->getItems());
     }
 }
