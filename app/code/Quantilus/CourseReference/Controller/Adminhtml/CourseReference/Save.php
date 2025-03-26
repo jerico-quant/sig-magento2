@@ -41,7 +41,7 @@ class Save extends \Magento\Backend\App\Action
         
             $model = $this->_objectManager->create(\Quantilus\CourseReference\Model\CourseReference::class)->load($id);
             if (!$model->getId() && $id) {
-                $this->messageManager->addErrorMessage(__('This Coursereference no longer exists.'));
+                $this->messageManager->addErrorMessage(__('This Course Reference no longer exists.'));
                 return $resultRedirect->setPath('*/*/');
             }
         
@@ -49,7 +49,7 @@ class Save extends \Magento\Backend\App\Action
         
             try {
                 $model->save();
-                $this->messageManager->addSuccessMessage(__('You saved the Coursereference.'));
+                $this->messageManager->addSuccessMessage(__('You saved the Course Reference.'));
                 $this->dataPersistor->clear('coursereference');
         
                 if ($this->getRequest()->getParam('back')) {
@@ -59,7 +59,7 @@ class Save extends \Magento\Backend\App\Action
             } catch (LocalizedException $e) {
                 $this->messageManager->addErrorMessage($e->getMessage());
             } catch (\Exception $e) {
-                $this->messageManager->addExceptionMessage($e, __('Something went wrong while saving the Coursereference.'));
+                $this->messageManager->addExceptionMessage($e, __('Something went wrong while saving the Course Reference.'));
             }
         
             $this->dataPersistor->set('coursereference', $data);

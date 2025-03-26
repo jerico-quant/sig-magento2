@@ -35,7 +35,7 @@ abstract class CourseReference extends \Magento\Backend\App\Action
     {
         $resultPage->setActiveMenu(self::ADMIN_RESOURCE)
             ->addBreadcrumb(__('Quantilus'), __('Quantilus'))
-            ->addBreadcrumb(__('Coursereference'), __('Coursereference'));
+            ->addBreadcrumb(__('Course Reference'), __('Course Reference'));
         return $resultPage;
     }
 }

@@ -14,7 +14,7 @@
 			<button name="add">
 				<url path="*/*/new"/>
 				<class>primary</class>
-				<label translate="true">Add new CourseReference</label>
+				<label translate="true">Add new Course Reference</label>
 			</button>
 		</buttons>
 	</settings>

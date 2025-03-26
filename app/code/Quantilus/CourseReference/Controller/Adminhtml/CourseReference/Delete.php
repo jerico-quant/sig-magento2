@@ -28,7 +28,7 @@ class Delete extends \Quantilus\CourseReference\Controller\Adminhtml\CourseRefer
                 $model->load($id);
                 $model->delete();
                 // display success message
-                $this->messageManager->addSuccessMessage(__('You deleted the Coursereference.'));
+                $this->messageManager->addSuccessMessage(__('You deleted the Course Reference.'));
                 // go to grid
                 return $resultRedirect->setPath('*/*/');
             } catch (\Exception $e) {
@@ -39,7 +39,7 @@ class Delete extends \Quantilus\CourseReference\Controller\Adminhtml\CourseRefer
             }
         }
         // display error message
-        $this->messageManager->addErrorMessage(__('We can\'t find a Coursereference to delete.'));
+        $this->messageManager->addErrorMessage(__('We can\'t find a Course Reference to delete.'));
         // go to grid
         return $resultRedirect->setPath('*/*/');
     }

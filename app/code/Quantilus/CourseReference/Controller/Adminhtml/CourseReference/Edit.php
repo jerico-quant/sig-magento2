@@ -41,7 +41,7 @@ class Edit extends \Quantilus\CourseReference\Controller\Adminhtml\CourseReferen
         if ($id) {
             $model->load($id);
             if (!$model->getId()) {
-                $this->messageManager->addErrorMessage(__('This Coursereference no longer exists.'));
+                $this->messageManager->addErrorMessage(__('This Course Reference no longer exists.'));
                 /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
                 $resultRedirect = $this->resultRedirectFactory->create();
                 return $resultRedirect->setPath('*/*/');
@@ -53,11 +53,11 @@ class Edit extends \Quantilus\CourseReference\Controller\Adminhtml\CourseReferen
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
         $this->initPage($resultPage)->addBreadcrumb(
-            $id ? __('Edit Coursereference') : __('New Coursereference'),
-            $id ? __('Edit Coursereference') : __('New Coursereference')
+            $id ? __('Edit Course Reference') : __('New Course Reference'),
+            $id ? __('Edit Course Reference') : __('New Course Reference')
         );
-        $resultPage->getConfig()->getTitle()->prepend(__('Coursereferences'));
-        $resultPage->getConfig()->getTitle()->prepend($model->getId() ? __('Edit Coursereference %1', $model->getId()) : __('New Coursereference'));
+        $resultPage->getConfig()->getTitle()->prepend(__('Course References'));
+        $resultPage->getConfig()->getTitle()->prepend($model->getId() ? __('Edit Course Reference %1', $model->getId()) : __('New Coursereference'));
         return $resultPage;
     }
 }
