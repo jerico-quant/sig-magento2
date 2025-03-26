@@ -76,12 +76,14 @@ class Index extends Action
         }*/
 
         // Get query parameters
-        $accountnumber = $this->getRequest()->getParam('accountnumber');
+        $course_id = $this->getRequest()->getParam('courseid');
+        $customer_number = $this->getRequest()->getParam('customernumber');
         $email = $this->getRequest()->getParam('email');
         $returnurl = $this->getRequest()->getParam('returnurl');
 
         // Store parameters in session
-        $this->_customerSession->setAccountNumber($accountnumber);
+        $this->_customerSession->setCourseId($course_id);
+        $this->_customerSession->setCustomerNumber($customer_number);
         $this->_customerSession->setEmail($email);
         $this->_customerSession->setReturnUrl($returnurl);
 
