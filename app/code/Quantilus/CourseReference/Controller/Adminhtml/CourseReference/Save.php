@@ -50,7 +50,7 @@ class Save extends \Magento\Backend\App\Action
             try {
                 $model->save();
                 $this->messageManager->addSuccessMessage(__('You saved the Coursereference.'));
-                $this->dataPersistor->clear('quantilus_coursereference_coursereference');
+                $this->dataPersistor->clear('coursereference');
         
                 if ($this->getRequest()->getParam('back')) {
                     return $resultRedirect->setPath('*/*/edit', ['coursereference_id' => $model->getId()]);
@@ -62,7 +62,7 @@ class Save extends \Magento\Backend\App\Action
                 $this->messageManager->addExceptionMessage($e, __('Something went wrong while saving the Coursereference.'));
             }
         
-            $this->dataPersistor->set('quantilus_coursereference_coursereference', $data);
+            $this->dataPersistor->set('coursereference', $data);
             return $resultRedirect->setPath('*/*/edit', ['coursereference_id' => $this->getRequest()->getParam('coursereference_id')]);
         }
         return $resultRedirect->setPath('*/*/');

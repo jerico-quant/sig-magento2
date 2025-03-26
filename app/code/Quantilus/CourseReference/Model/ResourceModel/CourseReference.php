@@ -17,7 +17,7 @@ class CourseReference extends AbstractDb
      */
     protected function _construct()
     {
-        $this->_init('quantilus_coursereference_coursereference', 'coursereference_id');
+        $this->_init('coursereference', 'coursereference_id');
     }
 }
 

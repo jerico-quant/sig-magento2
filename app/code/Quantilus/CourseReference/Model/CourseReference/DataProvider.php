@@ -64,13 +64,13 @@ class DataProvider extends AbstractDataProvider
         foreach ($items as $model) {
             $this->loadedData[$model->getId()] = $model->getData();
         }
-        $data = $this->dataPersistor->get('quantilus_coursereference_coursereference');
+        $data = $this->dataPersistor->get('coursereference');
         
         if (!empty($data)) {
             $model = $this->collection->getNewEmptyItem();
             $model->setData($data);
             $this->loadedData[$model->getId()] = $model->getData();
-            $this->dataPersistor->clear('quantilus_coursereference_coursereference');
+            $this->dataPersistor->clear('coursereference');
         }
         
         return $this->loadedData;

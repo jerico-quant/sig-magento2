@@ -47,7 +47,7 @@ class Edit extends \Quantilus\CourseReference\Controller\Adminhtml\CourseReferen
                 return $resultRedirect->setPath('*/*/');
             }
         }
-        $this->_coreRegistry->register('quantilus_coursereference_coursereference', $model);
+        $this->_coreRegistry->register('coursereference', $model);
         
         // 3. Build edit form
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */

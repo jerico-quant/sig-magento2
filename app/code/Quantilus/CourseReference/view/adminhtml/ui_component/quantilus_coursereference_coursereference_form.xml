@@ -48,7 +48,7 @@
 			</argument>
 			<settings>
 				<dataType>text</dataType>
-				<label translate="true">course_id</label>
+				<label translate="true">Courser Id</label>
 				<dataScope>course_id</dataScope>
 				<validation>
 					<rule name="required-entry" xsi:type="boolean">false</rule>
@@ -63,7 +63,7 @@
 			</argument>
 			<settings>
 				<dataType>text</dataType>
-				<label translate="true">course_name</label>
+				<label translate="true">Course Name</label>
 				<dataScope>course_name</dataScope>
 				<validation>
 					<rule name="required-entry" xsi:type="boolean">false</rule>
@@ -78,7 +78,7 @@
 			</argument>
 			<settings>
 				<dataType>text</dataType>
-				<label translate="true">customer_number</label>
+				<label translate="true">Customer Number</label>
 				<dataScope>customer_number</dataScope>
 				<validation>
 					<rule name="required-entry" xsi:type="boolean">false</rule>
@@ -93,7 +93,7 @@
 			</argument>
 			<settings>
 				<dataType>text</dataType>
-				<label translate="true">item_number</label>
+				<label translate="true">Item Number</label>
 				<dataScope>item_number</dataScope>
 				<validation>
 					<rule name="required-entry" xsi:type="boolean">false</rule>
@@ -108,7 +108,7 @@
 			</argument>
 			<settings>
 				<dataType>text</dataType>
-				<label translate="true">unit_price</label>
+				<label translate="true">Unit Price</label>
 				<dataScope>unit_price</dataScope>
 				<validation>
 					<rule name="required-entry" xsi:type="boolean">false</rule>
@@ -123,7 +123,7 @@
 			</argument>
 			<settings>
 				<dataType>text</dataType>
-				<label translate="true">blanket_sales_order_number</label>
+				<label translate="true">Blanket Sales Order Number</label>
 				<dataScope>blanket_sales_order_number</dataScope>
 				<validation>
 					<rule name="required-entry" xsi:type="boolean">false</rule>
@@ -138,7 +138,7 @@
 			</argument>
 			<settings>
 				<dataType>text</dataType>
-				<label translate="true">blanket_sales_order_line</label>
+				<label translate="true">Blanket Sales Order Line</label>
 				<dataScope>blanket_sales_order_line</dataScope>
 				<validation>
 					<rule name="required-entry" xsi:type="boolean">false</rule>
