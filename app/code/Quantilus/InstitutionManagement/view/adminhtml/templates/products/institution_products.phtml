@@ -1,0 +1,18 @@
+<div id="institution_products_grid">
+    <?= $block->getGridHtml() ?>
+</div>
+
+<input type="hidden" name="selected_products" id="selected_products" value="" />
+
+<script>
+require(['jquery'], function ($) {
+    // Update the hidden input with selected products when the form is submitted
+    $('#save').click(function () {
+        var selectedProducts = [];
+        $('#institution_products_grid input[type="checkbox"]:checked').each(function () {
+            selectedProducts.push($(this).val());
+        });
+        $('#selected_products').val(selectedProducts.join(','));
+    });
+});
+</script>

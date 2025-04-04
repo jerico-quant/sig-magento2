@@ -1,0 +1,215 @@
+@quantilus_primary_color: #0761BE;
+@quantilus_secondary_color: #CDDFF2;
+@quantilus_background_color: #F5F9FB;
+@qunatilus_primary_text_color: #333333;
+
+& when (@media-common = true) {
+
+    .page-header{
+        .header.panel {
+            > .header.links {
+                > li {
+                    > a {
+                        color: @qunatilus_primary_text_color;
+                        text-decoration: underline;
+
+                        &:active,&:visited{
+                            color: @qunatilus_primary_text_color;
+                            text-decoration: underline;
+                        }
+                    }
+
+                    &.greet{
+                        font-family: 'Lato-Bold';
+                    }
+                }
+            }
+        }
+    }
+
+    .copyright {
+        background-color: @quantilus_secondary_color;
+        color: @qunatilus_primary_text_color;
+    }
+
+    .useractions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: space-between;
+        margin: 0 auto;
+
+        .action-option {
+            flex: 1 1 calc(50% - 20px);
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            box-sizing: border-box;
+
+            h2 {
+                font-size: 3rem;
+                margin-bottom: 15px;
+                color: #333;
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                input[type="text"] {
+                    padding: 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    font-size: 1.6rem;
+                }
+
+                button {
+                    padding: 10px;
+                    background-color: #007bff;
+                    color: #fff;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    font-size: 1.6rem;
+
+                    &:hover {
+                        background-color: darken(#007bff, 10%);
+                    }
+                }
+            }
+
+            p {
+                margin: 0;
+
+                a {
+                    color: #007bff;
+                    text-decoration: none;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+
+    .checkout-index-index {
+        .header.content{
+            .cart-link-checkout-header {
+                float: right;
+            }
+        }
+
+        .checkout-agreement {
+            button.action {
+                span{
+                    font-size: 1.6rem;
+                }
+            }
+        }
+
+        .checkout-agreements-item-content {
+            .document-container {
+                h1{
+                    text-align: center;
+                    text-transform: uppercase;
+                }
+
+                h2{
+                    font-family: 'Lato-Light';
+                    font-size: 1.6em;
+                    margin-bottom: 5px;
+                    text-transform: uppercase;
+                }
+
+                h3{
+                    font-family: 'Lato-Regular';
+                    font-size: 1.1em;
+                    margin-bottom: 5px;
+                    text-transform: uppercase;
+                }
+
+                .column-wrap {
+                    display: flex;
+
+                    .column-content {
+                        flex: 1;
+
+                        .content-block {
+                            margin-bottom: 30px;
+                        }
+                    }
+                }
+
+                .terms-condition-footer {
+                    margin-top: 50px;
+                    border-top: 1px solid;
+                    padding-top: 10px;
+                    text-align: center;
+                    font-family: 'Lato-Light';
+                    font-size: 1em;
+                }
+            }
+        }
+    }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .page-header {
+        .header.panel {
+            padding-top: 50px;
+            padding-bottom: 20px;
+        }
+        .panel.wrapper {
+            background-color: @quantilus_secondary_color;
+            color: @qunatilus_primary_text_color;
+        }
+    }
+
+    .checkout-index-index {
+        .checkout-agreements-item-content {
+            .document-container {
+                .column-wrap {
+                    gap: 3rem;
+                }
+            }
+        }
+    }
+
+    .useractions {
+        width: 45%;
+    }
+}
+
+@media (max-width: 768px) {
+    .useractions {
+        flex-direction: column;
+        .action-option {
+            flex: 1 1 100%;
+        }
+    }
+
+    .checkout-index-index {
+        .header.content{
+            .cart-link-checkout-header {
+                display: none;
+            }
+        }
+
+        .checkout-agreements-item-content {
+            .document-container {
+                .column-wrap {
+                    flex-direction: column;
+                }
+            }
+        }
+    }
+}

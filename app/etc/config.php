@@ -354,11 +354,19 @@ return [
         'Magento_Wishlist' => 1,
         'Magento_WishlistAnalytics' => 1,
         'Magento_WishlistGraphQl' => 1,
+        'Avalara_AvaTax' => 1,
+        'Avalara_BaseProvider' => 1,
         'PayPal_Braintree' => 1,
         'PayPal_BraintreeCustomerBalance' => 1,
         'PayPal_BraintreeGiftCardAccount' => 1,
         'PayPal_BraintreeGiftWrapping' => 1,
         'PayPal_BraintreeGraphQl' => 1,
-        'Quantilus_FrontendRestriction' => 1
+        'Quantilus_CartPriceRule' => 1,
+        'Quantilus_CourseReference' => 1,
+        'Quantilus_FrontendRestriction' => 1,
+        'Quantilus_InstitutionManagement' => 1,
+        'Quantilus_MobiusUser' => 1,
+        'Quantilus_Versapay' => 1,
+        'Versapay_Versapay' => 1
     ]
 ];

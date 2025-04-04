@@ -1,0 +1,19 @@
+<?php
+/** @var \Quantilus\MobiusUser\Block\MobiususerOptions $block */
+    
+$userData = $block->getUserData();
+?>
+<div class="mobius-user">
+    <div class="content-wrapper">
+        <div class="useractions">
+            <div class="action-option purchase">
+                <h2>Enter your Voucher Code.</h2>
+                <form action="<?= $block->escapeUrl($block->getPurchaseByVoucherUrl()) ?>" method="post">
+                    <input type="hidden" name="form_key" value="<?= $block->getFormKey() ?>" />
+                    <input type="text" name="voucher_code" id="voucher_code" placeholder="Enter your Voucher Code" required="true" />
+                    <button type="submit">Proceed</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

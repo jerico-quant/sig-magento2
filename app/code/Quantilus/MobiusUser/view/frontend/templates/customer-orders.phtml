@@ -1,0 +1,17 @@
+<?php
+/** @var \Quantilus\MobiusUser\Block\CustomerOrders $block */
+?>
+<div class="mobius-user">
+    <div class="content-wrapper">
+        <div class="useractions">
+            <div class="action-option purchase">
+                <h2>My Orders</h2>
+                    <form action="<?= $block->escapeUrl($block->getViewMyOrdersUrl()) ?>" method="post">
+                    <input type="hidden" name="form_key" value="<?= $block->getFormKey() ?>" />
+                    <input type="text" name="email" id="email" placeholder="Enter your Email" required />
+                    <button type="submit">View My Orders</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

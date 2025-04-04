@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="payment">
+            <group id="versapay_gateway" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Versapay Payments</label>
+                <field id="can_use_checkout" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="title" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Title</label>
+                </field>
+                <field id="subdomain" translate="label" type="text" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Subdomain</label>
+                </field>
+                <field id="cc_enabled" translate="label" type="select" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Credit Card Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="ach_enabled" translate="label" type="select" sortOrder="37" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>ACH Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="gc_enabled" translate="label" type="select" sortOrder="37" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Gift Card Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+		        </field>
+                <field id="avs_rules" translate="label" type="multiselect" sortOrder="39" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>AVS Fraud Protection Rules</label>
+                    <source_model>Versapay\Versapay\Model\Config\Source\AvsRules</source_model>
+                    <can_be_empty>1</can_be_empty>
+                </field>
+                <field id="log_key" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Debug Logging API Key</label>
+                    <can_be_empty>1</can_be_empty>
+                </field>
+                <field id="api_token" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>API Token</label>
+                </field>
+                <field id="api_key" translate="label" type="text" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>API Key</label>
+                </field>
+                <field id="cc_settlement_token" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Credit Card Settlement Token</label>
+                </field>        
+                <field id="ach_settlement_token" translate="label" type="text" sortOrder="55" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>ACH Settlement Token</label>
+                </field>    
+                <field id="save_payment_method_by_default" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Save Payment Method by Default</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>                    
+                <field id="sort_order" translate="label" type="text" sortOrder="160" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Sort Order</label>
+                    <frontend_class>validate-number</frontend_class>
+                </field>             
+            </group>
+        </section>
+    </system>
+</config>

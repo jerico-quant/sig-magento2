@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "09d167c2f7f677b5531241222631993f",
+    "content-hash": "736fab057ab4f3c5b90eb04b8513efb7",
     "packages": [
         {
             "name": "2tvenom/cborencode",
@@ -125,6 +125,108 @@
                 "source": "https://github.com/adobe/stock-api-libphp/tree/1.1.6"
             },
             "time": "2025-01-07T18:03:22+00:00"
+        },
+        {
+            "name": "avalara/avatax-magento",
+            "version": "2.9.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://repo.magento.com/archives/avalara/avatax-magento/avalara-avatax-magento-2.9.0.0.zip",
+                "shasum": "073f34a5ccf984ea22d49ed7bfc3717341c58842"
+            },
+            "require": {
+                "avalara/avataxclient": "^24.11.0",
+                "magento/framework": "^100.1.0|101.0.*|>=102.0.0"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Avalara\\AvaTax\\": ""
+                }
+            },
+            "license": [
+                "OSL-3.0"
+            ],
+            "description": "Adobe Commerce module for Avalara's AvaTax suite of business tax calculation and processing services. Uses the AvaTax REST v2 API."
+        },
+        {
+            "name": "avalara/avataxclient",
+            "version": "24.12.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/avadev/AvaTax-REST-V2-PHP-SDK.git",
+                "reference": "34cd93ee10e33923b1642294ab9963c3c34f66f3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/avadev/AvaTax-REST-V2-PHP-SDK/zipball/34cd93ee10e33923b1642294ab9963c3c34f66f3",
+                "reference": "34cd93ee10e33923b1642294ab9963c3c34f66f3",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~6|~7",
+                "php": ">=5.5.9",
+                "psr/log": "^1.0 || ^2.0 || ^3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=5.7"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ],
+                "exclude-from-classmap": [
+                    "src/AvaTaxClient.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Avalara Developer Relations",
+                    "homepage": "https://developer.avalara.com"
+                },
+                {
+                    "name": "Community Developer Forum",
+                    "homepage": "https://community.avalara.com"
+                },
+                {
+                    "name": "Ted Spence",
+                    "email": "ted.spence@avalara.com"
+                },
+                {
+                    "name": "Bob Maidens",
+                    "email": "bob.maidens@avalara.com"
+                },
+                {
+                    "name": "Genevieve Conty",
+                    "email": "genevieve.conty@avalara.com"
+                }
+            ],
+            "description": "Client library for Avalara's AvaTax suite of business tax calculation and processing services. Uses the REST v2 API.",
+            "homepage": "https://developer.avalara.com/",
+            "keywords": [
+                "AvaTax",
+                "avalara",
+                "ecommerce",
+                "sales compliance",
+                "tax",
+                "tax calculation",
+                "taxes"
+            ],
+            "support": {
+                "docs": "https://developer.avalara.com",
+                "forum": "https://community.avalara.com",
+                "issues": "https://github.com/avadev/AvaTax-REST-V2-PHP-SDK/issues",
+                "source": "https://github.com/avadev/AvaTax-REST-V2-PHP-SDK"
+            },
+            "time": "2024-12-18T20:08:47+00:00"
         },
         {
             "name": "aws/aws-crt-php",
