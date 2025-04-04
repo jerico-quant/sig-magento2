@@ -95,6 +95,8 @@ class Index extends Landingpage
      */
     public function execute()
     {
+        $this->fetchParameters();
+        
         $course_id = $this->_customerSession->getCourseId();
         $customer_number = $this->_customerSession->getCustomerNumber();
 
