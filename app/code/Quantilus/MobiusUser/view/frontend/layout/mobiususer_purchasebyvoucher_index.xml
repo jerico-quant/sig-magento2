@@ -2,7 +2,7 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="content">
-            <block class="Quantilus\MobiusUser\Block\MobiususerOptions" name="Quantilus_MobiusUser_Name" template="Quantilus_MobiusUser::index.phtml" />
+            <block class="Quantilus\MobiusUser\Block\MobiususerOptions" name="Quantilus_MobiusUser_Purchasebyvoucher" template="Quantilus_MobiusUser::purchasebyvoucher.phtml" />
         </referenceContainer>
     </body>
 </page>

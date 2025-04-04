@@ -13,6 +13,7 @@ class RedirectObserver implements ObserverInterface
     protected $url;
     protected $scopeConfig;
 
+    const XML_PATH_ENABLED = 'frontend_restriction/settings/enabled';
     const XML_PATH_ALLOWED_URLS = 'frontend_restriction/settings/allowed_urls';
 
     public function __construct(
@@ -27,6 +28,12 @@ class RedirectObserver implements ObserverInterface
 
     public function execute(Observer $observer)
     {
+        // check if checks are enabled
+        $is_enabled = $this->scopeConfig->getValue(self::XML_PATH_ENABLED, \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+        if(!$is_enabled){
+            return false;
+        }
+
         $request = $observer->getEvent()->getRequest();
 
         $frontName = $request->getModuleName();

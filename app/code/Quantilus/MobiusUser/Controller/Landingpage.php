@@ -1,5 +1,5 @@
 <?php
-namespace Quantilus\MobiusUser\Controller\Index;
+namespace Quantilus\MobiusUser\Controller;
 
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
@@ -7,11 +7,12 @@ use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\Result\JsonFactory;
 use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\Controller\Result\RedirectFactory;
+use Magento\Framework\View\Result\PageFactory;
 
-class Index extends Action
+class Landingpage extends Action
 {
     /**
-     * @var \Magento\Framework\View\Result\PageFactory
+     * @var PageFactory
      */
     protected $_pageFactory;
 
@@ -39,14 +40,14 @@ class Index extends Action
      * Constructor
      *
      * @param Context $context
-     * @param \Magento\Framework\View\Result\PageFactory $pageFactory
+     * @param PageFactory $pageFactory
      * @param CustomerSession $customerSession
      * @param JsonFactory $resultJsonFactory
      * @param RedirectFactory $resultRedirectFactory
      */
     public function __construct(
         Context $context,
-        \Magento\Framework\View\Result\PageFactory $pageFactory,
+        PageFactory $pageFactory,
         CustomerSession $customerSession,
         JsonFactory $resultJsonFactory,
         RedirectFactory $resultRedirectFactory
@@ -59,12 +60,16 @@ class Index extends Action
     }
 
     /**
-     * Execute action
+     * View page action
      *
-     * @return ResponseInterface|\Magento\Framework\Controller\Result\Json
+     * @return \Magento\Framework\Controller\ResultInterface
      */
     public function execute()
     {
+        return $this->_pageFactory->create();
+    }
+
+    protected function fetchParameters(){
         // Validate the referrer
         $referrer = $this->getRequest()->getServer('HTTP_REFERER');
         /*if ($referrer !== $this->allowedReferrer) {
@@ -94,7 +99,5 @@ class Index extends Action
         $this->_customerSession->setCustomerNumber($customer_number);
         $this->_customerSession->setEmail($email);
         $this->_customerSession->setReturnUrl($returnurl);
-        
-        return $this->_pageFactory->create();
     }
 }

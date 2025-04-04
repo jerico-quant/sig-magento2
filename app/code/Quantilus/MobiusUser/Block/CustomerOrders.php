@@ -15,6 +15,6 @@ class CustomerOrders extends \Magento\Framework\View\Element\Template
     }
 
     public function getViewMyOrdersUrl(){
-        return $this->getUrl('*/viewmyorders/*');
+        return $this->getUrl('*/viewmyorders/show');
     }
 }

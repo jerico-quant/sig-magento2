@@ -5,6 +5,7 @@ namespace Quantilus\MobiusUser\Block\Cart\Item\Renderer;
 use Magento\Checkout\Block\Cart\Item\Renderer\Actions\Generic;
 use Magento\Framework\View\Element\Text;
 use Magento\Quote\Model\Quote\Item\AbstractItem;
+use Magento\Customer\Model\Session as CustomerSession;
 
 /**
  * @api
@@ -50,13 +51,18 @@ class Actions extends Text
     {
         $this->setText('');
 
+        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+        $customerSession = $objectManager->get(\Magento\Customer\Model\Session::class);
+        $mainProductId = $customerSession->getMainProductId(); //get the main product id that was added
+
         $layout = $this->getLayout();
         $item = $this->getItem();
         foreach ($this->getChildNames() as $child) {
-            if($child == "checkout.cart.item.renderers.simple.actions.remove" && $item->getData('product_id') == 1)
-            {
-                continue;
-            }
+            // this removes the delete icon for the item that match the $mainProductId
+            // if($child == "checkout.cart.item.renderers.simple.actions.remove" && $item->getData('product_id') == $mainProductId)
+            // {
+            //     continue;
+            // }
             /** @var Generic $childBlock */
             $childBlock = $layout->getBlock($child);
             if ($childBlock instanceof Generic) {

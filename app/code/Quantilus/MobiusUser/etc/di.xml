@@ -1,5 +1,4 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="Magento\Checkout\Block\Cart\Item\Renderer\Actions" type="Quantilus\MobiusUser\Block\Cart\Item\Renderer\Actions" />
-
     <preference for="Magento\Checkout\Block\Cart\Item\Renderer" type="Quantilus\MobiusUser\Block\Cart\Item\Renderer" />
 </config>

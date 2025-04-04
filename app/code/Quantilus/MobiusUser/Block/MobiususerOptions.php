@@ -31,12 +31,8 @@ class MobiususerOptions extends \Magento\Framework\View\Element\Template
         ];
     }
 
-    public function getProcessKitCodeUrl(){
-        return $this->getUrl('*/processkitcode/*');
-    }
-
-    public function getPurchaseKitUrl(){
-        return $this->getUrl('*/purchasekit/*');
+    public function getPurchaseByVoucherUrl(){
+        return $this->getUrl('*/purchasebyvoucher/buy');
     }
 
     public function getViewMyOrdersUrl(){
