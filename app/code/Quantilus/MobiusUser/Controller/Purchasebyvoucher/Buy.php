@@ -136,7 +136,7 @@ class Buy extends Action
 
         try {
             // load the Course Reference record, it has the product sku in item_number field
-            $courseReference = $this->getCourseReferenceByCourseIdAndCustomerNumber(0, $customer_number);
+            $courseReference = $this->getCourseReferenceByCourseIdAndCustomerNumber($course_id, $customer_number);
             $sku = $courseReference->getItemNumber();
             $product = $this->_productRepository->get($sku);
             $productId = $product->getId();
